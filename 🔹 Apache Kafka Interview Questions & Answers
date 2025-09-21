@@ -1,0 +1,161 @@
+🔹 Apache Kafka Interview Questions & Answers
+Basic
+
+What is Apache Kafka?
+Answer: Kafka is a distributed streaming platform used for building real-time data pipelines and streaming applications. It can publish, subscribe, store, and process streams of records in a fault-tolerant way.
+
+What are the main components of Kafka?
+Answer:
+
+Producer: Sends messages to Kafka topics.
+
+Consumer: Reads messages from topics.
+
+Broker: Kafka server that stores messages.
+
+Topic: Logical channel to store messages.
+
+Partition: Subdivision of a topic for parallelism.
+
+What is a Kafka topic and partition?
+Answer:
+
+Topic: Named stream of messages.
+
+Partition: Kafka splits a topic into partitions for parallelism and scalability. Each partition is ordered.
+
+Why use Kafka instead of a traditional message queue?
+Answer: Kafka is high-throughput, distributed, durable, and scalable, whereas traditional queues focus on simple message delivery.
+
+Intermediate
+
+What is Zookeeper’s role in Kafka?
+Answer: Zookeeper is used to:
+
+Maintain cluster metadata.
+
+Track broker status (alive/dead).
+
+Handle leader election for partitions.
+
+Manage configurations dynamically.
+
+How does a Kafka producer ensure message delivery?
+Answer: Using acks:
+
+acks=0: Fire-and-forget.
+
+acks=1: Wait for leader acknowledgment.
+
+acks=all: Wait for all replicas, ensuring strong durability.
+
+Explain Kafka consumer groups.
+Answer:
+
+Consumers in a group share partitions.
+
+Each partition is consumed by only one consumer in the group.
+
+Enables parallel processing and scalability.
+
+What is Kafka retention?
+Answer: Kafka retains messages for a configured time or size, independent of consumption. Consumers can replay messages anytime.
+
+Advanced
+
+What is Kafka KRaft mode?
+Answer: KRaft (Kafka Raft Metadata mode) is Kafka without Zookeeper. Kafka itself handles metadata using the RAFT consensus algorithm.
+
+Why is Zookeeper not required in KRaft mode?
+Answer:
+
+KRaft replaces Zookeeper with internal Raft-based quorum controllers.
+
+Kafka brokers store metadata directly in a special internal topic (__cluster_metadata).
+
+Leader elections, broker metadata, and topic configs are managed internally, eliminating Zookeeper dependency.
+
+What are the benefits of KRaft over Zookeeper?
+Answer:
+
+Simpler cluster architecture.
+
+No external dependency (Zookeeper).
+
+Easier to scale and manage.
+
+Faster leader elections and metadata updates.
+
+Explain ISR (In-Sync Replica) in Kafka.
+Answer: ISR is a set of replicas that are fully caught up with the leader. Only messages replicated to all ISR replicas are considered committed (with acks=all).
+
+How do Kafka producers achieve high throughput?
+Answer:
+
+Batch messages (batch.size).
+
+Compress messages (compression.type).
+
+Asynchronous sends.
+
+Keep long-lived connections.
+
+How does Kafka achieve fault tolerance?
+Answer:
+
+Replicated partitions across brokers.
+
+Leader/follower model.
+
+ISR ensures only synced replicas are considered committed.
+
+Automatic failover in case of broker failure.
+
+What is exactly-once semantics (EOS) in Kafka?
+Answer:
+
+Guarantees messages are processed exactly once across producer → Kafka → consumer.
+
+Achieved with idempotent producers and transactional APIs.
+
+Explain how Kafka handles leader election.
+Answer:
+
+In Zookeeper mode: Zookeeper manages leader election.
+
+In KRaft mode: controller quorum uses Raft to elect partition leaders.
+
+What is Kafka log compaction?
+Answer:
+
+Retains only the latest message per key.
+
+Useful for changelog topics (e.g., user profile updates).
+
+What is the difference between Kafka replication factor and partitions?
+Answer:
+
+Replication factor: Number of copies of a partition.
+
+Partitions: Number of parallel logs within a topic.
+
+How can Kafka integrate with Spark/ELK/Splunk?
+Answer:
+
+Kafka → Spark Streaming → Process data → Push to Elasticsearch.
+
+Kafka → Logstash → ELK for indexing and dashboards.
+
+Kafka → Splunk via HEC or Splunk Connect for Kafka.
+
+
+What is the difference between Kafka and traditional pub/sub systems?
+
+| Feature     | Kafka                    | Traditional MQ  |
+| ----------- | ------------------------ | --------------- |
+| Storage     | Persistent log           | Often ephemeral |
+| Replay      | Supported                | Usually not     |
+| Scalability | High (partitioned)       | Limited         |
+| Throughput  | Millions of messages/sec | Lower           |
+
+

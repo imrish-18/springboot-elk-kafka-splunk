@@ -1,0 +1,117 @@
+🔹 Splunk Interview Questions
+Basic
+
+What is Splunk?
+Answer: Splunk is a platform for searching, monitoring, and analyzing machine-generated data (logs) in real time. It collects data via forwarders, indexes it, and provides dashboards and alerts.
+
+What are the main components of Splunk?
+Answer:
+
+Forwarder: Sends logs to Splunk indexers.
+
+Indexer: Indexes the incoming data and stores it.
+
+Search Head: Provides UI to search, visualize, and analyze logs.
+
+What is HEC in Splunk?
+Answer: HTTP Event Collector (HEC) allows apps to send JSON events directly to Splunk via HTTP, enabling real-time log ingestion.
+
+
+
+
+Intermediate
+
+Explain Splunk Indexes.
+Answer: An index is a repository where Splunk stores and organizes data for efficient searching. Indexes can be default (like main) or custom. Each index can have its own retention policy.
+
+What is Splunk SPL?
+Answer: Splunk Processing Language (SPL) is a query language used to search, analyze, and visualize logs. Example:
+
+index=main sourcetype="apache_access" | stats count by status
+
+
+Difference between Splunk Free, Enterprise, and Cloud.
+Answer:
+
+Free: 500 MB/day ingestion, no clustering.
+
+Enterprise: Paid, unlimited ingestion, clustering, advanced features.
+
+Cloud: SaaS version of Splunk, subscription-based.
+
+Advanced
+
+How to monitor log performance in Splunk?
+Answer: Using the Monitoring Console, you can check indexer performance, search performance, forwarder connectivity, and data ingestion metrics.
+
+What are the types of Splunk Forwarders?
+Answer:
+
+Universal Forwarder (UF): Lightweight, only forwards raw logs.
+
+Heavy Forwarder (HF): Can parse and index data before forwarding.
+
+Explain Splunk Clustering.
+Answer: Splunk supports Indexer Clustering for high availability and Search Head Clustering for scaling searches and dashboards across multiple nodes.
+
+🔹 ELK Stack Interview Questions
+Basic
+
+What is ELK Stack?
+Answer: ELK Stack consists of:
+
+Elasticsearch: Search and analytics engine.
+
+Logstash: Data collection and processing pipeline.
+
+Kibana: Visualization tool for dashboards.
+
+| Feature          | ELK                 | Splunk              |
+| ---------------- | ------------------- | ------------------- |
+| License          | Open-source         | Proprietary         |
+| Cost             | Low                 | High                |
+| Search Language  | Lucene / Kibana KQL | SPL                 |
+| Setup            | DIY                 | All-in-one, easy    |
+| Machine Learning | Paid X-Pack         | Built-in ML Toolkit |
+
+
+Intermediate
+
+What are Beats in ELK?
+Answer: Beats are lightweight data shippers installed on servers to collect logs and send them to Logstash or Elasticsearch (e.g., Filebeat, Metricbeat).
+
+What is an index in Elasticsearch?
+Answer: An index is like a database in Elasticsearch. It stores documents with mappings and supports querying and analytics.
+
+Difference between Elasticsearch and Logstash.
+Answer:
+
+Elasticsearch: Storage and search engine.
+
+Logstash: Pipeline to ingest, parse, and transform data before sending to Elasticsearch.
+
+Advanced
+
+How to handle large-scale ELK deployments?
+Answer:
+
+Use Elasticsearch clusters with master, data, and client nodes.
+
+Implement index lifecycle management (ILM) to manage data retention.
+
+Use Kafka or Redis as a buffer between Logstash and Elasticsearch.
+
+What is the difference between Logstash filters and Kibana visualizations?
+Answer:
+
+Filters: Transform, parse, or enrich data before indexing.
+
+Visualizations: Represent indexed data in dashboards for analysis.
+
+Explain ELK vs EFK.
+Answer:
+
+ELK: Elasticsearch + Logstash + Kibana.
+
+EFK: Elasticsearch + Fluentd + Kibana (Fluentd replaces Logstash as log shipper)
+
