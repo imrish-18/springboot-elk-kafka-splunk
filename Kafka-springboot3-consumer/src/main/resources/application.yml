@@ -1,0 +1,13 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: rishabh-3
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: latest
+      properties:
+        spring.json.value.default.type: com.kafka.consumer.dto.Customer
+        spring.json.trusted.packages: "*"
+
+

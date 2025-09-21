@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  splunk:
+    image: splunk/splunk:9.2.0.1
+    platform: linux/amd64     # needed on M1/M2 Macs
+    container_name: splunk
+    environment:
+      - SPLUNK_GENERAL_TERMS=--accept-sgt-current-at-splunk-com
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=admin123
+      - SPLUNK_ENABLE_HEC=true
+      - SPLUNK_HEC_TOKEN=12345678-abcd-efgh-ijkl-9876543210ab
+    ports:
+      - "8000:8000"   # Splunk Web UI
+      - "8088:8088"   # HEC endpoint
+      - "9997:9997"   # Forwarder
+    volumes:
+      - splunk-data:/opt/splunk/var
+      - splunk-etc:/opt/splunk/etc
+
+volumes:
+  splunk-data:
+  splunk-etc:
+
+#
+#Splunk recently changed their Docker licensing flow — now you must accept both:
+#
+#  Splunk General Terms (SGT)
+#
+#  Splunk Software License

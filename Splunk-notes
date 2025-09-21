@@ -1,0 +1,69 @@
+Advantages of Splunk
+
+Ease of Setup & Use – Faster to get started, with a polished UI and ready-made dashboards.
+
+Powerful Search Language (SPL) – Splunk Processing Language is extremely powerful for searching, filtering, and analyzing logs.
+
+Scalability – Enterprise-grade scalability with clustering and distributed deployments.
+
+Security & Compliance – Built-in support for RBAC, auditing, and enterprise compliance (PCI, HIPAA, etc.).
+
+All-in-One – Single product for log collection, storage, search, monitoring, and alerting.
+
+Machine Learning – Out-of-the-box ML Toolkit for anomaly detection and predictive analytics.
+
+Support – Enterprise-level support, extensive documentation, and ecosystem integrations.
+
+
+
+Disadvantages of Splunk
+
+Expensive – Licensing is based on data ingestion volume (per GB/day), which becomes costly at scale.
+
+Closed Source – Proprietary software, unlike ELK which is open-source.
+
+Resource Hungry – Requires high memory/CPU, especially for large-scale deployments.
+
+Vendor Lock-in – Migration out of Splunk can be challenging.
+
+Learning Curve – SPL is powerful but has its own syntax to learn.
+
+
+
+| Feature              | ELK Stack (Elasticsearch, Logstash, Kibana)                           | Splunk                                                          |
+| -------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **License**          | Open source (Elastic license for some features)                       | Proprietary (commercial)    
+                                    |
+| **Cost**             | Free (self-hosted) + infra cost; Elastic Cloud is cheaper than Splunk | Expensive (license cost based on data volume
+
+                 |
+| **Ease of Setup**    | More DIY, requires integration of Elasticsearch + Logstash + Kibana   | Easier “all-in-one” install         
+                            |
+| **Search Language**  | Lucene Query DSL, Kibana KQL (less feature-rich)                      | SPL (Splunk Processing Language, very powerful)     
+            |
+| **Scalability**      | Scales horizontally, but needs tuning                                 | Scales well with enterprise clustering        
+                  |
+| **Data Ingestion**   | Logstash, Beats, Kafka, custom pipelines                              | Built-in forwarders, HTTP Event Collector  
+                     |
+| **Visualization**    | Kibana dashboards (powerful but requires config)                      | Splunk dashboards (polished, enterprise-ready) 
+                 |
+| **Machine Learning** | Available in Elastic (paid X-Pack features)                           | Built-in ML Toolkit      
+                                       |
+| **Support**          | Community + paid Elastic support                                      | Enterprise support with SLAs      
+                              |
+| **Best for**         | Cost-conscious teams, open-source lovers, custom setups               | Enterprises that value support, simplicity, and don’t mind cost |
+
+
+
+
+✅ In short:
+
+ELK = Open-source, cheaper, more customizable, but requires effort to integrate/manage.
+
+Splunk = Proprietary, expensive, enterprise-ready, easier to use, with stronger analytics/search features.
+
+Splunk recently changed their Docker licensing flow — now you must accept both:
+
+Splunk General Terms (SGT)
+
+Splunk Software License

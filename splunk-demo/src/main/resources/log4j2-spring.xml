@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{ISO8601} %-5level [%t] %C{1}: %msg%n%throwable" />
+        </Console>
+
+        <!-- Splunk HEC Appender -->
+        <SplunkHttp
+                name="SplunkHttp"
+                url="http://localhost:8088"
+        token="12345678-abcd-efgh-ijkl-9876543210ab"
+        host="localhost"
+        index="main"
+        type="event"
+        source="springboot-logs"
+        sourcetype="log4j"
+        messageFormat="json"
+        disableCertificateValidation="true">
+        <PatternLayout pattern="%d{ISO8601} %-5level [%t] %logger{1}: %msg%n%throwable" />
+    </SplunkHttp>
+</Appenders>
+
+<Loggers>
+<!-- Log everything at INFO level -->
+<Root level="info">
+    <AppenderRef ref="Console" />
+    <AppenderRef ref="SplunkHttp" />
+</Root>
+</Loggers>
+</Configuration>

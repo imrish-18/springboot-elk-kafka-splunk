@@ -1,0 +1,50 @@
+In Apache Kafka, a topic is the logical channel or category where data (messages/records) is published and from which consumers read.
+
+Think of it as a named feed of messages.
+
+Key points about Kafka Topics:
+
+Producer writes to a topic → A producer application sends messages to a topic.
+
+Consumer reads from a topic → A consumer application subscribes to a topic and processes messages.
+
+Topics are split into partitions → Each topic is divided into multiple partitions for scalability and parallel processing.
+
+Messages inside a partition are ordered → Ordering is guaranteed only within a partition, not across the entire topic.
+
+Topics can be durable → Kafka persists messages on disk, and retention policies (time-based or size-based) decide how long data is stored.
+
+Multiple consumers can read independently → Different consumer groups can read the same topic at their own pace.
+
+
+In Kafka, an offset is a unique identifier that represents the position of a record within a partition of a topic.
+
+Think of it as a line number in a log file.
+
+🔹 Key Points about Offsets:
+
+Unique within a partition
+
+Each record inside a partition gets an incremental offset: 0, 1, 2, 3….
+
+Offsets are not global, they are specific to each partition.
+
+Used by consumers
+
+A consumer uses the offset to know where to read next.
+
+Example: If a consumer has processed messages up to offset 5, it will start reading from offset 6 next.
+
+Stored in Kafka
+
+Offsets are stored in a special topic called __consumer_offsets, which tracks how far each consumer group has read.
+
+Supports replay
+
+Consumers can reset or rewind offsets to reprocess old data (useful for debugging, analytics, or recovery).
+
+Decouples producers & consumers
+
+Producers don’t care about offsets — Kafka assigns them.
+
+Consumers manage offsets for their own consumption progress.
